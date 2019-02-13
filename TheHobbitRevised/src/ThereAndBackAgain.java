@@ -52,7 +52,7 @@ public class ThereAndBackAgain
 	public static void createParty(ArrayList<Traveler> party, String[] dwarveNames) {
 		
 		for(String name : dwarveNames) {
-			party.add(new Dwarf(name));
+			party.add(new Dwarf(name));//creates new dwarf object with name name and ads to the end of ArrayList party.
 		}
 			
 	}
