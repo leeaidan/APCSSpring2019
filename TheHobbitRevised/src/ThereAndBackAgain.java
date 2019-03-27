@@ -44,8 +44,13 @@ public class ThereAndBackAgain
 		//Calls create party to combine the hobbits, dwarves, and the String array of Dwarves.
 		createParty(party2, dwarfNames);
 		
+		allTravel(party2, 100);
+		for(Traveler aTraveler: party2) {
+			System.out.println(aTraveler.getName() + " has traveled " + aTraveler.getDistanceTraveled() + " miles.");
+		}
+		
 		//Prints out the result of allTravel that returns the distance traveled of each character.
-		System.out.println(allTravel(party2, 100));
+		
 	}
 	
 	//Adds the dwarves names to end of ArrayList party
@@ -58,16 +63,12 @@ public class ThereAndBackAgain
 	}
 		
 	//method that contains for loop to return the distance each character has traveled using a for loop.
-	public static String allTravel(ArrayList<Traveler> party, int miles) {
-		String result = "";
+	public static void allTravel(ArrayList<Traveler> party, int miles) {
 		
-		for(int i = 0; i<party.size(); i++) {
-			party.get(i).travel(miles);
-			
-			result+= party.get(i).getName() + " has traveled " + party.get(i).getDistanceTraveled() + " miles.\n";
-			
+		for(Traveler aTraveler : party) {
+			aTraveler.travel(miles);
 		}
-		return result;
+			
 	}
 		
 		// Make a new ArrayList to hold a 2nd party of Travelers called party2:
