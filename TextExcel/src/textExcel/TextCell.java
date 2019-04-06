@@ -1,7 +1,7 @@
 package textExcel;
 
 public class TextCell implements Cell {
-	String text;
+	private String text;
 	
 	public TextCell(String text) {
 		if(text.indexOf("\"") >= 0) {
