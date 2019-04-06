@@ -4,7 +4,11 @@ public class TextCell implements Cell {
 	String text;
 	
 	public TextCell(String text) {
-		this.text = text;
+		if(text.indexOf("\"") >= 0) {
+			this.text = text.substring(1, text.length() -1);
+		} else {
+			this.text =text;
+		}
 	}
 	
 	public String abbreviatedCellText() {

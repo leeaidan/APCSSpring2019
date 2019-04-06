@@ -21,9 +21,43 @@ public class Spreadsheet implements Grid
 	@Override
 	public String processCommand(String command)
 	{
-		// TODO Auto-generated method stub
-		return "";
+		
+		if(command.length() == 2 || command.length() == 3) {
+			return getCell(new SpreadsheetLocation(command)).fullCellText();
+			
+		}else if(command.substring(0,5).equalsIgnoreCase("clear")) { //clearing cells and sheet, NOTE(for some reason only contains doesn't work rip)
+			clear(command);
+			return getGridText();
+			
+		} else { //assignment
+			cellAssignment(command);
+			return getGridText();
+		
+		}
+	
 	}
+	
+	public void clear(String index) {
+	
+		if(index.equalsIgnoreCase("clear")) {
+			for(int i = 0; i < getRows(); i++) {
+				for(int j = 0; j< getCols(); j++) {
+					cell[i][j] = new EmptyCell();
+				}
+			}
+		} else {
+			String[] splitIndex = index.split(" ");
+			SpreadsheetLocation loc = new SpreadsheetLocation(splitIndex[1]);
+			cell[loc.getRow()][loc.getCol()] = new EmptyCell();
+		}
+	}
+	
+	public void cellAssignment(String input) {
+		String[] splitAssignment = input.split(" = ", 2);
+		SpreadsheetLocation loc = new SpreadsheetLocation(splitAssignment[0]);
+		cell[loc.getRow()][loc.getCol()] = new TextCell(splitAssignment[1]);
+	}
+	 
 
 	@Override
 	public int getRows()
@@ -42,15 +76,41 @@ public class Spreadsheet implements Grid
 	@Override
 	public Cell getCell(Location loc)
 	{
-		// TODO Auto-generated method stub
+		
 		return cell[loc.getRow()][loc.getCol()];
 	}
 
 	@Override
 	public String getGridText() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		String spreadsheetGrid = "   |";
+		for(int i = 'A'; i <= 'L'; i++) {
+			spreadsheetGrid = spreadsheetGrid + ((char) i + "         |");
+		}
+		
+		for(int j =0; j<numRow; j++) {
+			if((j+1)<10) {
+				spreadsheetGrid += ("\n" + (j+1) + "  |");
+			}else {
+				spreadsheetGrid +=("\n" + (j+1) + " |");
+			}
+			
+			
+		for(int k=0; k< numCol; k++) {
+				spreadsheetGrid += cell[j][k].abbreviatedCellText();
+				for(int l = cell[j][k].abbreviatedCellText().length(); l < 10; l++){
+					spreadsheetGrid += " ";
+				}
+				spreadsheetGrid += "|";
+			}
+				
+			
+			
+		}
+		
+		return spreadsheetGrid + "\n";
+		
+		
 	}
 
 }

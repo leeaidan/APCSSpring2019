@@ -22,9 +22,9 @@ public class SpreadsheetLocation implements Location
     public SpreadsheetLocation(String cellName)
     {
         // TODO: Fill this out with your own code
-    	
+    	cellName = cellName.toUpperCase();
     	row = Integer.parseInt(cellName.substring(1)) -1; //-1 to offset from the headers
-    	column = cellName.toUpperCase().charAt(0) -65;
+    	column = cellName.charAt(0) -'A';
     	    	
     	
     }

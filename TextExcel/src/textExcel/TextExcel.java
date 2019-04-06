@@ -23,9 +23,13 @@ public class TextExcel
 				
 				while(!input.equalsIgnoreCase("quit")) { //while quit is not typed, loop gives input to produce Answer
 					System.out.println(sheet.processCommand(input));
-					Location loc = new SpreadsheetLocation(input);
-					System.out.println("row: " + loc.getRow());
-					System.out.println("col: " + loc.getCol());
+				//	Location loc = new SpreadsheetLocation(input);
+					//TestsALL.Helper th = new TestsALL.Helper();
+					//System.out.println(th.getText());
+					
+					//System.out.println(sheet.getGridText());
+					//System.out.println("row: " + loc.getRow());
+					//System.out.println("col: " + loc.getCol());
 					System.out.println("Enter a command:");
 					input = userInput.nextLine();
 		    	}
