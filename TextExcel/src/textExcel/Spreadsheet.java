@@ -1,3 +1,7 @@
+/*
+ * @author Aidan Lee
+ * @version 1.0 3/6/2019
+ */
 package textExcel;
 
 // Update this file with your own code.
@@ -25,14 +29,16 @@ public class Spreadsheet implements Grid
 		if(command.length() == 2 || command.length() == 3) {
 			return getCell(new SpreadsheetLocation(command)).fullCellText();
 			
-		}else if(command.substring(0,5).equalsIgnoreCase("clear")) { //clearing cells and sheet, NOTE(for some reason only contains doesn't work rip)
+		}else if(command.toLowerCase().startsWith("clear")) { //clearing cells and sheet, NOTE(for some reason only contains doesn't work rip)
 			clear(command);
 			return getGridText();
 			
-		} else { //assignment
+		} else if(command.indexOf("=") != -1){ //assignment
 			cellAssignment(command);
 			return getGridText();
 		
+		} else {
+			return "";
 		}
 	
 	}
