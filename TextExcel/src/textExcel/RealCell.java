@@ -1,3 +1,7 @@
+/*
+ * @author Aidan Lee
+ * @version 1.0 3/6/2019
+ */
 package textExcel;
 
 public class RealCell implements Cell {
@@ -14,7 +18,7 @@ public class RealCell implements Cell {
 		return input;
 	}
 	
-	public double getDoubleValue() {
+	public double getDoubleValue() {//called by subclasses
 		return Double.parseDouble(input);
 	}
 }
