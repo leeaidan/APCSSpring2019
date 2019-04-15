@@ -1,11 +1,11 @@
 package textExcel;
 
 public class PercentCell extends RealCell {
-	private String input;
+	//private String input;
 	
 	public PercentCell(String input) {
 		super(input);
-		this.input = input;
+		//this.input = input;
 		
 	}
 	
@@ -20,9 +20,12 @@ public class PercentCell extends RealCell {
 	}
 	
 	public double getDoubleValue() {
-		String temp = input.substring(0, (input.length() -1));
+		
+		String temp = getInput().substring(0, (getInput().length() -1));
 		return Double.parseDouble(temp) / 100;
 	}
+	
+
 }
 
 

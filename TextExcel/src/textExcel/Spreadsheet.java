@@ -4,8 +4,6 @@
  */
 package textExcel;
 
-// Update this file with your own code.
-
 public class Spreadsheet implements Grid
 {
 	private Cell[][] cell;
@@ -15,11 +13,8 @@ public class Spreadsheet implements Grid
 		numRow = 20;
 		numCol = 12;
 		cell = new Cell[numRow][numCol];
-		for(int row = 0; row < numRow; row++) {
-			for(int col = 0; col < numCol; col++) {
-				cell[row][col] = new EmptyCell();
-			}
-		}
+		
+		clear("clear");
 	}
 	
 	@Override
@@ -46,9 +41,9 @@ public class Spreadsheet implements Grid
 	public void clear(String index) {
 	
 		if(index.equalsIgnoreCase("clear")) {
-			for(int i = 0; i < getRows(); i++) {
-				for(int j = 0; j< getCols(); j++) {
-					cell[i][j] = new EmptyCell();
+			for(int row = 0; row < getRows(); row++) {
+				for(int column = 0; column< getCols(); column++) {
+					cell[row][column] = new EmptyCell();
 				}
 			}
 		} else {
@@ -90,10 +85,9 @@ public class Spreadsheet implements Grid
 	@Override
 	public Cell getCell(Location loc)
 	{
-		
 		return cell[loc.getRow()][loc.getCol()];
 	}
-
+	
 	@Override
 	public String getGridText() 
 	{
@@ -102,28 +96,22 @@ public class Spreadsheet implements Grid
 			spreadsheetGrid = spreadsheetGrid + ((char) i + "         |");
 		}
 		
-		for(int j =0; j<numRow; j++) {
-			if((j+1)<10) {
-				spreadsheetGrid += ("\n" + (j+1) + "  |");
+		spreadsheetGrid +="\n";
+		for(int row =1; row <= numRow; row++) {
+			if(row<10) {
+				spreadsheetGrid += row + "  |";
 			}else {
-				spreadsheetGrid +=("\n" + (j+1) + " |");
+				spreadsheetGrid += row + " |";
 			}
 			
-			
-		for(int k=0; k< numCol; k++) {
-				spreadsheetGrid += cell[j][k].abbreviatedCellText();
-				for(int l = cell[j][k].abbreviatedCellText().length(); l < 10; l++){
-					spreadsheetGrid += " ";
-				}
-				spreadsheetGrid += "|";
-			}
-				
-			
-			
+		for(int col=0; col< numCol; col++) {
+			spreadsheetGrid += cell[row-1][col].abbreviatedCellText();
+			spreadsheetGrid += "|";
+		}	
+			spreadsheetGrid += "\n";
 		}
 		
-		return spreadsheetGrid + "\n";
-		
+		return spreadsheetGrid;
 		
 	}
 

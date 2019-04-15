@@ -5,7 +5,7 @@
 package textExcel;
 
 public class RealCell implements Cell {
-	private String input;
+	protected String input;
 	
 	public RealCell(String input) {
 		this.input = input;
@@ -21,4 +21,11 @@ public class RealCell implements Cell {
 	public double getDoubleValue() {//called by subclasses
 		return Double.parseDouble(input);
 	}
+	
+	public String getInput() {
+		return input;
+	}
+
+	
+	
 }
