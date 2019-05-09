@@ -1,10 +1,11 @@
 /*
  * @author Aidan Lee
  * @version 1.0 3/6/2019
+ * This class/object contains information stores the location of a cell and has methods to return location
+ * in terms of the row and column. Its constructor takes in a unparsed and sorted cellName and converts
+ * it into a location in terms of row and columns ( ints ).
  */
 package textExcel;
-
-//Update this file with your own code.
 
 public class SpreadsheetLocation implements Location
 {

@@ -9,11 +9,11 @@ package textExcel;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-// Update this file with your own code.
+
 
 public class TextExcel
 {
-
+	//Main method that takes userinput through scanner, calls processCommand in a while loop
 	public static void main(String[] args)
 	{
 		 {
@@ -23,13 +23,6 @@ public class TextExcel
 				
 				while(!input.equalsIgnoreCase("quit")) { //while quit is not typed, loop gives input to produce Answer
 					System.out.println(sheet.processCommand(input));
-				//	Location loc = new SpreadsheetLocation(input);
-					//TestsALL.Helper th = new TestsALL.Helper();
-					//System.out.println(th.getText());
-					
-					//System.out.println(sheet.getGridText());
-					//System.out.println("row: " + loc.getRow());
-					//System.out.println("col: " + loc.getCol());
 					System.out.println("Enter a command:");
 					input = userInput.nextLine();
 		    	}
